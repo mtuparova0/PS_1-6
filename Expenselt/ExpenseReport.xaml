@@ -1,0 +1,51 @@
+﻿<Window x:Class="ExpenseIt.ExpenseReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Expenselt"
+        mc:Ignorable="d"
+        Title="Expenselt-View Expense" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="watermark.png"/>
+            </Grid.Background>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" FontWeight="Bold" FontSize="25" FontStyle="Italic" Foreground="blue">Expense Report For:</Label>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold">Name:</Label>
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Name}"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" FontWeight="Bold">Department:</Label>
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path = Department}"></Label>
+                    <DataGrid Background="FloralWhite" RowBackground="FloralWhite" AlternatingRowBackground="DarkOrange"
+                      Grid.Row="3" ItemsSource="{Binding Path=Expenses}" AutoGenerateColumns="False" RowHeaderWidth="0" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ExpenseType" Binding="{Binding Path=ExpenseType}" />
+                            <DataGridTextColumn Header="Amount" Binding="{Binding Path=ExpenseAmount}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
